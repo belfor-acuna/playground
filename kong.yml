@@ -1,0 +1,14 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+  - name: nest-service
+    host: nestcontainer
+    port: 3000 
+    protocol: http
+    routes:
+      - name: nest-route
+        paths:
+          - /nest
+        strip_path: true
+
