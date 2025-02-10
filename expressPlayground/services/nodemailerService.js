@@ -1,15 +1,24 @@
-import transporter from "../config/nodemailerConfig.js"
+import refreshTransport from "../config/mailerConfig.js";
 
-export async function sendMail() {
-    // send mail with defined transport object
-    const info = await transporter.sendMail({
-      from: '"Maddison Foo Koch 👻" <maddison53@ethereal.email>', // sender address
-      to: "bar@example.com, baz@example.com", // list of receivers
-      subject: "Hello ✔", // Subject line
-      text: "Hello world?", // plain text body
-      html: "<b>Hello world?</b>", // html body
-    });
-  
-    console.log("Message sent: %s", info.messageId);
-    // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
+
+
+export async function sendMailTo(from,message) {
+    try{
+      const transporter = await refreshTransport();
+      console.log('Transporter: ',transporter);
+      const info = await transporter.sendMail({
+        from: from,
+        to: "Belfor Acuna <b.acuna.cas@gmail.com>",
+        subject: "Portfolio incoming message",
+        text: `Hey there! Im ${from} and I have a message for you: ${message}`,
+      });
+      console.log("Message sent: %s", info.messageId);
+      return {sent:true, message:info.messageId};
+    }catch(e){
+        console.log('Error sending email: ',e)
+        return {sent:false, message:e};
+    }
+
   }
+
+  
