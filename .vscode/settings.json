@@ -1,5 +1,6 @@
 {
     "conventionalCommits.scopes": [
-        "Whole environment"
+        "Whole environment",
+        "CI/CD Playground"
     ]
 }
