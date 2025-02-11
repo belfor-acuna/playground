@@ -23,7 +23,8 @@ services:
     volumes:
       - ./kong.yml:/kong/declarative/kong.yml:ro  
     depends_on:
-      - nestcontainer 
+      - expresscontainer
+      - nestcontainer
 
   nestcontainer:
     build:
@@ -32,9 +33,22 @@ services:
     networks:
       - kong-net
     expose:
-      - "3000"  # Exponer el puerto 3000 de Nest
+      - "3000"  
     environment:
       - NODE_ENV=production
+
+  expresscontainer:
+    build:
+      context: ./expressPlayground  
+    container_name: expresscontainer
+    networks:
+      - kong-net
+    expose:
+      - "3001"  
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - ./expressPlayground/.env
 
 networks:
   kong-net:
