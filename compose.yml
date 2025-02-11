@@ -47,8 +47,12 @@ services:
       - "3001"  
     environment:
       - NODE_ENV=production
-    env_file:
-      - ./expressPlayground/.env
+      - PORT=${PORT}
+      - CLIENT_ID=${CLIENT_ID}
+      - CLIENT_SECRET=${CLIENT_SECRET}
+      - REDIRECT_URI=${REDIRECT_URI}
+      - REFRESH_TOKEN=${REFRESH_TOKEN}
+      - MY_EMAIL=${MY_EMAIL}
 
 networks:
   kong-net:
