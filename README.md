@@ -117,7 +117,7 @@ Follow the next steps if you want to use this!
     ```
 9. To test a nestJS route:
     ```
-    curl http://localhost:8000/
+    curl http://localhost:8000/testnest
     ```
 
 ## Contact
