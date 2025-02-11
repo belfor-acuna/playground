@@ -9,6 +9,19 @@ services:
     routes:
       - name: nest-route
         paths:
-          - /nest
-        strip_path: true
+          - /
+        strip_path: false
+  - name: express-service
+    host: expresscontainer
+    port: 3001
+    protocol: http
+    routes:
+      - name: express-mailing-route
+        paths:
+          - /mail/send
+        strip_path: false
+      - name: express-test
+        paths:
+          - /test
+        strip_path: false
 

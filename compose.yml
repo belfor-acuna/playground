@@ -23,8 +23,8 @@ services:
     volumes:
       - ./kong.yml:/kong/declarative/kong.yml:ro  
     depends_on:
-      - nestcontainer
       - expresscontainer
+      - nestcontainer
 
   nestcontainer:
     build:
@@ -49,8 +49,6 @@ services:
       - NODE_ENV=production
     env_file:
       - ./expressPlayground/.env
-    ports:
-      - "3001:3001"  
 
 networks:
   kong-net:
