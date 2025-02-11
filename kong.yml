@@ -9,7 +9,7 @@ services:
     routes:
       - name: nest-route
         paths:
-          - /
+          - /testnest
         strip_path: false
   - name: express-service
     host: expresscontainer
@@ -22,6 +22,6 @@ services:
         strip_path: false
       - name: express-test
         paths:
-          - /test
+          - /testexpress
         strip_path: false
 
