@@ -18,15 +18,15 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.GCE_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.GCE_EXTERNAL_IP }} >> ~/.ssh/known_hosts
+          ssh-keyscan -H ${{ secrets.VM_IP }} >> ~/.ssh/known_hosts
 
       - name: Transfer Files to VM
         run: |
-          scp -i ~/.ssh/id_rsa -r ./* belforportfolioutility@${{ secrets.GCE_EXTERNAL_IP }}:/home/belforportfolioutility/dev
+          scp -i ~/.ssh/id_rsa -r ./* belforportfolioutility@${{ secrets.VM_IP }}:/home/belforportfolioutility/dev
 
       - name: Deploy with Docker Compose
         run: |
-          ssh -i ~/.ssh/id_rsa belforportfolioutility@${{ secrets.GCE_EXTERNAL_IP }} << 'EOF'
+          ssh -i ~/.ssh/id_rsa belforportfolioutility@${{ secrets.VM_IP }} << 'EOF'
             cd /home/belforportfolioutility/dev
             docker compose down
             docker compose up -d --build
