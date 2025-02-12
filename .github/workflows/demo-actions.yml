@@ -19,12 +19,6 @@ jobs:
           echo "${{ secrets.GCE_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.VM_IP }} >> ~/.ssh/known_hosts
-      
-      - name: Delete previous repository files
-        run: |
-          ssh -i ~/.ssh/id_rsa belforportfolioutility@${{ secrets.VM_IP }} << 'EOF'
-            rm -rf /home/belforportfolioutility/dev/*
-          EOF
 
       - name: Transfer Files to VM
         run: |
