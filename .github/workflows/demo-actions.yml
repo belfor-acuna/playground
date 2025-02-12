@@ -39,7 +39,7 @@ jobs:
             echo "REFRESH_TOKEN=${{ secrets.REFRESH_TOKEN }}" >> .env
             echo "MY_EMAIL=${{ secrets.MY_EMAIL }}" >> .env
         
-            scp -i ~/.ssh/id_rsa .env belforportfolioutility@${{ secrets.VM_IP }}:/home/belforportfolioutility/mi-repo/.env
+            scp -i ~/.ssh/id_rsa .env belforportfolioutility@${{ secrets.VM_IP }}:/home/belforportfolioutility/dev/.env
         
 
       - name: Deploy with Docker Compose
