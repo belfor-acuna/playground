@@ -22,7 +22,7 @@ jobs:
 
       - name: Deploy with Docker Compose
         run: |
-          ssh -i ~/.ssh/id_rsa ubuntu@${{ secrets.VM_IP }} << 'EOF'
+          ssh -i ~/.ssh/id_rsa belforportfolioutility@${{ secrets.VM_IP }} << 'EOF'
             git pull origin develop
             docker-compose down
             docker-compose up -d --build
