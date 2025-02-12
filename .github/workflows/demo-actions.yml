@@ -39,7 +39,7 @@ jobs:
             echo "REFRESH_TOKEN=${{ secrets.REFRESH_TOKEN }}" >> .env
             echo "MY_EMAIL=${{ secrets.MY_EMAIL }}" >> .env
         
-            scp -i ~/.ssh/id_rsa .env ubuntu@${{ secrets.GCE_EXTERNAL_IP }}:/home/ubuntu/mi-repo/.env
+            scp -i ~/.ssh/id_rsa .env ubuntu@${{ secrets.VM_IP }}:/home/ubuntu/mi-repo/.env
         
 
       - name: Deploy with Docker Compose
