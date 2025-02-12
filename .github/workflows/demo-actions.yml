@@ -19,10 +19,28 @@ jobs:
           echo "${{ secrets.GCE_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.VM_IP }} >> ~/.ssh/known_hosts
+      
+      - name: Delete previous repository files
+        run: |
+          ssh -i ~/.ssh/id_rsa belforportfolioutility@${{ secrets.VM_IP }} << 'EOF'
+            rm -rf /home/belforportfolioutility/dev/*
+          EOF
 
       - name: Transfer Files to VM
         run: |
           scp -i ~/.ssh/id_rsa -r ./* belforportfolioutility@${{ secrets.VM_IP }}:/home/belforportfolioutility/dev
+      
+      - name: Create and Upload .env File
+        run: |
+            echo "EXPRESS_PORT=${{ secrets.EXPRESS_PORT }}" > .env
+            echo "CLIENT_ID=${{ secrets.CLIENT_ID }}" >> .env
+            echo "CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}" >> .env
+            echo "REDIRECT_URI=${{ secrets.REDIRECT_URI }}" >> .env
+            echo "REFRESH_TOKEN=${{ secrets.REFRESH_TOKEN }}" >> .env
+            echo "MY_EMAIL=${{ secrets.MY_EMAIL }}" >> .env
+        
+            scp -i ~/.ssh/id_rsa .env ubuntu@${{ secrets.GCE_EXTERNAL_IP }}:/home/ubuntu/mi-repo/.env
+        
 
       - name: Deploy with Docker Compose
         run: |
