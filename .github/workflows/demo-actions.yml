@@ -3,7 +3,7 @@ name: Deploy to GCE
 on:
   push:
     branches:
-      - githubActionsDev
+      - feature/githubActionsDev
 
 jobs:
   deploy:
