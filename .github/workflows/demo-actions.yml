@@ -3,7 +3,7 @@ name: Deploy to GCE
 on:
   push:
     branches:
-      - develop
+      - main
 
 jobs:
   deploy:
@@ -48,4 +48,5 @@ jobs:
             cd /home/belforportfolioutility/dev
             docker compose down
             docker compose up -d --build
+            rm .env
           EOF
