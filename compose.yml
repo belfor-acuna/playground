@@ -36,6 +36,10 @@ services:
       - "3000"  
     environment:
       - NODE_ENV=production
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - S3_BUCKET=${S3_BUCKET}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - S3_REGION=${S3_REGION}
 
   expresscontainer:
     build:

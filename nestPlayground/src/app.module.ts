@@ -1,9 +1,14 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { S3handlerModule } from './s3handler/s3handler.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [],
+  imports: [S3handlerModule,ConfigModule.forRoot({
+    isGlobal:true,
+    envFilePath: '../.env'
+  })],
   controllers: [AppController],
   providers: [AppService],
 })

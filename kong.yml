@@ -11,6 +11,10 @@ services:
         paths:
           - /testnest
         strip_path: false
+      - name: audio-upload
+        paths:
+          - /s3/upload/audio
+        strip_path: false
   - name: express-service
     host: expresscontainer
     port: 3001
