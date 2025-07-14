@@ -1,23 +1,3 @@
-# Playground - Belfor's Experiments
-
-## Introduction
-
-Hi! In this project, I tried something new, which is why it’s called Belfor’s Experiments. Long story short, I wanted to create a backend playground for my portfolio ([Check out my portfolio](https://belfor-acuna-portfolio.onrender.com))
- and decided to showcase different frameworks with interesting functionalities in various languages.
-
-## Situation
-As you may know, students don’t have a lot of budget to host several projects on multiple hosts or buckets.
-So the first thing that came to my mind was: Can I actually deploy a repository with more than one framework on just one VPS?
-I had never done this before, so it was a new question to solve. 😅
-
-## Solution
-I remembered my Software Engineering course, took the time to re-investigate how to accomplish this, and my conclusion was to create a mono-repo where I could group everything together. As you can see, this repository currently contains two frameworks:
-
-    Express.js
-    NestJS
-
-These are interconnected by an API Gateway built with Kong, which routes the traffic to each container inside a Docker network.
-
 ## How does it work?
 This repository contains two main directories, each corresponding to a different backend framework:
 
